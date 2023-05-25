@@ -10,7 +10,7 @@ const PersonalSchema = new Schema({
     clearance_level: { type: String, enum: [ "I", "II", "III", "IV", "V"] }
 });
 
-AuthorSchema.virtual("url").get(function () {
+PersonalSchema.virtual("url").get(function () {
     return `/catalog/personal/${this.id}`;
 });
 
