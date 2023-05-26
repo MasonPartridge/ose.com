@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require('./routes/about');
 var oseDatabaseRouter = require('./routes/ose-database');
+var personalRouter = require('./routes/personal');
 
 var app = express();
 
