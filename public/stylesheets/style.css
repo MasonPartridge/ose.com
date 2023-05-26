@@ -6,3 +6,45 @@ body {
 a {
   color: #00B7FF;
 }
+
+.shrink {
+  flex-grow: 0;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-margins {
+  margin: 0;
+}
+
+.grey-background {
+  background-color: gray;
+}
+
+.side-bar {
+  max-width: 128px;
+  padding: 16px;
+  gap: 8px;
+  color: aliceblue;
+}
+
+.side-bar > a {
+  color: aliceblue;
+}
+
+.side-bar > a:hover {
+  color: brown;
+}
+
+.container {
+  background-color: gray;
+}
