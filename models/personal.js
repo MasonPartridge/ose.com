@@ -14,4 +14,4 @@ PersonalSchema.virtual("url").get(function () {
     return `/catalog/personal/${this.id}`;
 });
 
-module.exports = mongoose.model("Personal", AuthorSchema);
+module.exports = mongoose.model("Personal", PersonalSchema);
