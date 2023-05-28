@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="stylesheet" href="../public/stylesheets/style.css" />
+    <title>OSE Database</title>
+</head>
+<body>
+    <div>
+        <h1>The OSE Database</h1>
+        <p>Number of OSE's documented: <%= ose_count %></p>
+    </div>
+    <ul>
+        <% all_ose.forEach(function(ose) { %>
+            <li>
+                <div class="row">
+                    <p><%= "OSE-" + ose.anonomoly_id_number %></p>
+                    <p><%= "Author: " + ose.author %></p>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
