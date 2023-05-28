@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSE Enter Form</title>
+</head>
+<body>
+    <form method="POST" action="">
+        <label for="anonomoly_id_number">OSE Identification Number:</label>
+        <input 
+            id="anonomoly_id_number"
+            type="number"
+            name="anonomoly_id_number_field"
+            required="true"
+        />
+        <label for="author">Author:</label>
+        <input
+            id="author"
+            type="select"
+            placeholder="Select Author"
+            name="author_field"
+            required="true"
+        />
+        <% authors.forEach((author) => { %>
+            <option value="<%= author._id %>">Dr. <%= author.family_name %></option>
+        <% }); %>
+        <label for="object_class">Object Class:</label>
+        <input
+            id="object_class"
+            type="select"
+            placeholder="Select Object Class"
+            name="object_class_field"
+            required="true"
+        />
+        <% [["ZAYIN", "TETH", "HE", "WAW", "ALEPH"]].forEach((object_class) => { %>
+            <option value="<%= object_class %>"><%= object_class %></option>
+        <% }); %>
+        <label for="special_containment_procedures">Special Containment Procedures:</label>
+        <input
+            id="special_containment_procedures"
+            type="text"
+            name="special_containment_procedures_field"
+        />
+        <label for="description">Description:</label>
+        <input
+            id="description"
+            type="text"
+            name="description_field"
+        />
+        <input type="submit" value="Submit OSE Entry" />
+    </form>
+</body>
+</html>
