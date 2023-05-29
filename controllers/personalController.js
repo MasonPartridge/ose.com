@@ -9,3 +9,6 @@ exports.personal_info = asyncHandler(async (req, res, next) => {
     res.send(`NOT IMPLEMENTED: PERSONAL INFORMATION FOR ${req.params.id}`);
 });
 
+exports.employee_form_get = asyncHandler(async (req, res) => {
+    res.render('employee_form');
+})
