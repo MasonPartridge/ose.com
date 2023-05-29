@@ -32,7 +32,9 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
             .sort( {first_name: 1} )
             .exec()
     ).then((personal) => {
-        res.render('ose-documentation-form');
+        res.render('ose-documentation-form', {
+            authors: personal
+        });
     }).catch(err => {
         res.status(500).send('Error occurred while fetching Personal data');
     });

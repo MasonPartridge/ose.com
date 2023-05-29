@@ -24,7 +24,7 @@
             required="true"
         />
         <% authors.forEach((author) => { %>
-            <option value="<%= author._id %>">Dr. <%= author.name %></option>
+            <option value="<%= author._id %>">Dr. <%= author.first_name + author.family_name %></option>
         <% }); %>
         <label for="object_class">Object Class:</label>
         <input
