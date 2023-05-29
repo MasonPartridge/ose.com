@@ -14,7 +14,7 @@ exports.employee_form_get = asyncHandler(async (req, res) => {
     res.render('employee_form');
 })
 
-exports.personal = [
+exports.employee_form_post = [
     body("first_name")
         .trim()
         .isLength({ min: 1 })
