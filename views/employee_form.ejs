@@ -34,16 +34,16 @@
             name="date_of_death_field"
         />
         <label for="clearance_level">Clearance Level:</label>
-        <input
+        <select 
+            for="clearance_level"
             id="clearance_level"
-            type="select"
-            placeholder="Select Employee Clearance Level"
             name="clearance_level_field"
             required="true"
-        />
-        <% [["I", "II", "III", "IV", "V"]].forEach((clearance_level) => { %>
+        >
+        <% ["I", "II", "III", "IV", "V"].forEach((clearance_level) => { %>
             <option value="<%= clearance_level %>"><%= clearance_level %></option>
         <% }); %>
+        </select>
         <input type="submit" value="Submit Employee Form" />
     </form>
 </body>
