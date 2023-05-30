@@ -6,8 +6,8 @@ const personal_controller = require("../controllers/personalController");
 
 router.get("/", personal_controller.personal_list);
 
-router.get("/:id", personal_controller.personal_info);
-
 router.get("/employee-form", personal_controller.employee_form_get);
+
+router.get("/view/:id", personal_controller.personal_info);
 
 module.exports = router;
