@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const personal_controller = require("../controllers/personalController");
+const personal_controller = require("../controllers/employeeController");
 
 /// PERSONAL LISTINGS ROUTES ///
 

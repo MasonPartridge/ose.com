@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
 const OSE = require("../models/ose");
-const Personal = require("../models/personal");
+const Personal = require("../models/employee");
 const asyncHandler = require("express-async-handler");
 
 exports.ose_list = asyncHandler(async (req, res) => {
