@@ -15,7 +15,7 @@ const PersonalSchema = new Schema({
 });
 
 PersonalSchema.virtual("url").get(function () {
-    return `/catalog/personal/${this.id}`;
+    return `/database/personal/${this.id}`;
 });
 
 module.exports = mongoose.model("Personal", PersonalSchema);

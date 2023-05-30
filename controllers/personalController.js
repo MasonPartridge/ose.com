@@ -38,6 +38,7 @@ exports.employee_form_post = [
         .optional({ nullable: true })
         .isISO8601()
         .toDate(),
+    body("clearance_level_field"),
 
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
@@ -46,7 +47,8 @@ exports.employee_form_post = [
             first_name: req.body.first_name_field,
             family_name: req.body.family_name_field,
             date_of_birth: req.body.date_of_birth_field,
-            date_of_death: req.body.date_of_death_field
+            date_of_death: req.body.date_of_death_field,
+            clearance_level: req.body.clearance_level_field
         });
 
         if (!errors.isEmpty()) {
@@ -54,7 +56,7 @@ exports.employee_form_post = [
             return;
         } else {
             await employee.save();
-            res.redirect('/');
+            res.redirect('/personal');
         }
     })
 ];
