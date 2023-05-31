@@ -27,15 +27,14 @@ exports.ose_info = asyncHandler(async (req, res, next) => {
 });
 
 exports.ose_form_get = asyncHandler(async (req, res) => {
-    Promise(
-        Personal.find({}, "first_name family_name")
-            .sort( {first_name: 1} )
-            .exec()
-    ).then((personal) => {
-        res.render('ose-documentation-form', {
+    try {
+        const personal = await Personal.find({}, "first_name family_name")
+            .sort({ first_name: 1 })
+            .exec();           
+        res.render('ose_form', {
             authors: personal
         });
-    }).catch(err => {
+    } catch (err)  {
         res.status(500).send('Error occurred while fetching Personal data');
-    });
+    }
 });
