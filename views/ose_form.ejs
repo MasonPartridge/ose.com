@@ -16,23 +16,23 @@
             required="true"
         />
         <label for="author">Author:</label>
-        <input
+        <select
             id="author"
-            type="select"
-            placeholder="Select Author"
+            for="author"
             name="author_field"
             required="true"
-        />
-        <% authors.forEach((author) => { %>
-            <option value="<%= author._id %>">Dr. <%= author.first_name + " " + author.family_name %></option>
-        <% }); %>
+        >
+            <% authors.forEach((author) => { %>
+                <option value="<%= author._id %>">Dr. <%= author.first_name + " " + author.family_name %></option>
+            <% }); %>
+        </select>
         <label for="object_class">Object Class:</label>
         <select 
             id="object_class"
             for="object_class"
             name="object_class_field"
             required="true"
-            >
+        >
             <% ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"].forEach((object_class) => { %>
                 <option value="<%= object_class %>"><%= object_class %></option>
             <% }); %>
