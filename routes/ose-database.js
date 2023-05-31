@@ -11,5 +11,7 @@ router.get("/:id", ose_controller.ose_info);
 
 router.get("/", ose_controller.ose_list);
 
+router.post("/ose-form", ose_controller.ose_form_post);
+
 
 module.exports = router;

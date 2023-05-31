@@ -79,7 +79,7 @@ exports.ose_form_post = [
                 res.status(500).send('Error occurred while fetching Personal data');
             }
         } else {
-            await OSE.save();
+            await ose.save();
             res.redirect('/ose-database');
         }
     })
