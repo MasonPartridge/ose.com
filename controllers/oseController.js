@@ -12,9 +12,10 @@ exports.ose_list = asyncHandler(async (req, res) => {
             .populate("author")
             .exec()
     ]).then(([oseCount, allOSE]) => {
-        res.render('ose-database', {
+        res.render('index', {
             ose_count: oseCount,
-            all_ose: allOSE
+            all_ose: allOSE,
+            inputPage: './ose-database.ejs'
         });
     }).catch(err => {
         console.error('Error retrieving OSE document:', error);
