@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OSE Corporation</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/images/OSELogo.png"/>
-  </head>
-  <body>
-    <div class="row">
-      <img 
-        src="/images/transparentlogo.png"
-        class="shrink">
-        <div>
-          <h1 class="no-margins">OSE Corporation</h1>
-          <p>Welcome to the OSE Corporation! Our modo here is Observe, Study, and Enhance!</p>
+
+<head>
+  <title>OSE Corporation</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/images/OSELogo.png" />
+</head>
+
+<body>
+  <div class="bg-black">
+    <div class="mx-[25vw] flex items-center gap-4">
+      <img src="/images/OSELogo.png" class="shrink">
+      <div>
+        <h1 class="text-white">Welcome to the OSE Corporation!</h1>
+        <p class="text-yellow-100"> Our modo here is Observe, Study, and Enhance!</p>
+      </div>
+    </div>
+  </div>
+  <div class="min-h-[16px] bg-red-700 shadow-lg"></div>
+  <div class="mx-[16vw] my-[5vh] flex flex-row justify-center">
+    <div class="flex gap-8">
+      <div class="flex flex-col bg-gray-600 min-w-[156px] p-[16px] gap-4 text-white font-bold rounded-lg max-h-[400px]">
+        <a href="/ose-database">ose-database</a>
+        <a href="/employee-database">employees</a>
+      </div>
+      <div class="gap-4 flex flex-col">
+        <div class="min-h-[64px] bg-slate-700 p-4 text-white flex flex-col justify-center">
+          <p>
+            <strong>Announcements:</strong> This website is a personal project for learning web development!
+          </p>
         </div>
+        <div class="gap-4 flex flex-col h-[700px]">
+          <div class="min-h-[64px] bg-slate-700 p-4 text-white flex flex-col justify-center">
+            <p>
+              <strong>About Us:</strong> We here at the OSE Corporation seek to push collective human knowledge past the
+              fragile limits of our minds! Our organization captures and observes useful and dangerous anomalies at our
+              hundreds of facilities and observation posts. These corporate owned locations study and run tests on these
+              anomalies to extract useful information on how to either exploit their anomalous properties or replicate
+              their attributes for the betterment of mankind and our employees.
+            </p>
+          </div>
+          <div class="flex gap-4 justify-center items-center">
+              <a 
+                href="/employee-database"
+                class="min-h-[64px] bg-slate-700 flex flex-col justify-center text-white flex-auto text-center rounded-lg 
+                  hover:bg-red-950 hover:font-bold hover:min-h-[74px]"
+              >CLICK TO ENTER: OSE DATABASE</a>
+              <a 
+                href="/employee-database"
+                class="min-h-[64px] bg-slate-700 flex flex-col justify-center text-white flex-auto text-center rounded-lg 
+                hover:bg-red-950 hover:font-bold hover:min-h-[74px]"
+              >CLICK TO ENTER: EMPLOYEE LISTINGS</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col grey-background side-bar">
-      <a href="/ose-database">ose-database</a>
-      <a href="/employee-database">employees</a>
-    </div>
-  </body>
+</body>
+
 </html>
