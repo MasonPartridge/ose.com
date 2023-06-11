@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.render('index', {title: 'OSE Corporation'});
+  res.render('index', {title: 'OSE Corporation', inputPage: './mainpage.ejs'});
 });
 
 module.exports = router;
