@@ -17,7 +17,7 @@
             <li>
                 <div class="row">
                     <p><%= "OSE-" + ose.anonomoly_id_number %></p>
-                    <p><%= "Author: " + ose.author %></p>
+                    <p><%= "Author: Dr. " + ose.author.first_name + " " + ose.author.family_name %></p>
                 </div>
             </li>
         <% }); %>

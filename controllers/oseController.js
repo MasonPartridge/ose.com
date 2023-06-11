@@ -17,6 +17,7 @@ exports.ose_list = asyncHandler(async (req, res) => {
             all_ose: allOSE
         });
     }).catch(err => {
+        console.error('Error retrieving OSE document:', error);
         res.status(500).send('Error occurred while fetching OSE data');
     });
 

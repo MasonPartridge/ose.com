@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const oseSchema = new Schema({
     anonomoly_id_number: { type: Number, required: true },
-    author: { type: Schema.Types.ObjectId, ref: "Author", required: true },
+    author: { type: Schema.Types.ObjectId, ref: "Personal", required: true },
     object_class: { 
         type: String,
         enum: ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"],

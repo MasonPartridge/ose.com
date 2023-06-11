@@ -3,7 +3,16 @@ const Personal = require("../models/employee");
 const asyncHandler = require("express-async-handler");
 
 exports.personal_list = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: EMPLOYEE DATABASE");
+    Promise.all([
+        Personal.countDocuments({}).exec(),
+        Personal.find({}, "anonomoly_id_number author")
+            .exec()
+    ]).then(([oseCount, allOSE]) => {
+        console.log(allOSE);
+        res.send('Employees: ' + oseCount);
+    }).catch(err => {
+        res.status(500).send('Error occurred while fetching OSE data');
+    });
 });
 
 exports.personal_info = asyncHandler(async (req, res, next) => {
