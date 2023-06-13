@@ -2,6 +2,7 @@ const { body, validationResult } = require("express-validator");
 const OSE = require("../models/ose");
 const Personal = require("../models/employee");
 const asyncHandler = require("express-async-handler");
+const ose = require("../models/ose");
 
 exports.ose_list = asyncHandler(async (req, res) => {
 
@@ -25,7 +26,15 @@ exports.ose_list = asyncHandler(async (req, res) => {
 });
 
 exports.ose_info = asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: INFORMATION FOR ${req.params.id}`);
+    try {
+        const ose = await OSE.findOne({ _id: req.params.id }).exec();
+        res.render('index', {
+            inputPage: './ose-information.ejs',
+            ose: ose
+        });
+    } catch (err) {
+        res.status(500).send('Error occurred while fetching OSE data');
+    }
 });
 
 exports.ose_form_get = asyncHandler(async (req, res) => {
@@ -69,7 +78,7 @@ exports.ose_form_post = [
             description: req.body.description_field
         })
 
-        if(!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             try {
                 const personal = await Personal.find({}, "first_name family_name")
                     .sort({ first_name: 1 })
