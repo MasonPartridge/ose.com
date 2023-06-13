@@ -679,3 +679,8 @@ video {
 .hover\:font-bold:hover {
   font-weight: 700;
 }
+
+.hover\:text-blue-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity));
+}
