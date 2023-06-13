@@ -3,7 +3,7 @@
     <hr class="border-t-4 border-red-700">
     <p><strong>Documentation Manager: </strong><%= `Author: Dr. ${ose.author.first_name} ${ose.author.family_name}` %></p>
     <p><strong>Item #: </strong><%= `OSE-${ose.anonomoly_id_number}` %></p>
-    <p><strong>Object Class: </strong><%= `OSE-${ose.object_class}` %></p>
+    <p><strong>Object Class: </strong><%= `${ose.object_class}` %></p>
     <p><strong>Description: </strong><%= `${ose.special_containment_procedures}` %></p>
     <p><strong>Special Containment Procedures: </strong><%= `${ose.description}` %></p>
 </div>
