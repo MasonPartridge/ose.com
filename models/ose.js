@@ -16,7 +16,7 @@ const oseSchema = new Schema({
 })
 
 oseSchema.virtual("url").get(function() {
-    return `/database/ose/${this._id}`;
+    return `/ose-database/${this._id}`;
 })
 
 module.exports = mongoose.model("OSE", oseSchema);
