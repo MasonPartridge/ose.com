@@ -12,7 +12,7 @@
                     <a href="<%= `/ose-database/${ose._id}` %>">
                         <%= `OSE-${((ose.anonomoly_id_number > 99) ? ose.anonomoly_id_number : ((ose.anonomoly_id_number
                             > 9) ? `0${ose.anonomoly_id_number}` : `00${ose.anonomoly_id_number}` ))} - Author:
-                            Dr.${ose.author.first_name} ${ose.author.family_name}` %>
+                            Dr. ${ose.author.first_name} ${ose.author.family_name}` %>
                     </a>
                 </div>
             </li>

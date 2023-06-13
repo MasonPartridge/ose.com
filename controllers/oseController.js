@@ -27,7 +27,8 @@ exports.ose_list = asyncHandler(async (req, res) => {
 
 exports.ose_info = asyncHandler(async (req, res, next) => {
     try {
-        const ose = await OSE.findOne({ _id: req.params.id }).exec();
+        const ose = await OSE.findOne({ _id: req.params.id })
+        .populate("author").exec();
         res.render('index', {
             inputPage: './ose-information.ejs',
             ose: ose
