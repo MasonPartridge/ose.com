@@ -557,6 +557,10 @@ video {
   min-height: 64px;
 }
 
+.min-h-\[75vh\] {
+  min-height: 75vh;
+}
+
 .min-w-\[156px\] {
   min-width: 156px;
 }
@@ -595,6 +599,15 @@ video {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.border-t-4 {
+  border-top-width: 4px;
+}
+
+.border-red-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(185 28 28 / var(--tw-border-opacity));
 }
 
 .bg-black {
