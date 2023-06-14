@@ -8,7 +8,7 @@ router.get("/", personal_controller.personal_list);
 
 router.get("/employee-form", personal_controller.employee_form_get);
 
-router.get("/employee-personal-file/:id", personal_controller.employee_info);
+router.get("/:id", personal_controller.employee_info);
 
 router.post("/employee-form", personal_controller.employee_form_post);
 
