@@ -7,9 +7,12 @@ exports.personal_list = asyncHandler(async (req, res, next) => {
         Personal.countDocuments({}).exec(),
         Personal.find({}, "anonomoly_id_number author")
             .exec()
-    ]).then(([oseCount, allOSE]) => {
-        console.log(allOSE);
-        res.send('Employees: ' + oseCount);
+    ]).then(([employeeCount, allEmployees]) => {
+        res.render('index', {
+            inputPage: './employee-database',
+            employee_count: employeeCount,
+            all_employee: allEmployees
+        })
     }).catch(err => {
         res.status(500).send('Error occurred while fetching OSE data');
     });
