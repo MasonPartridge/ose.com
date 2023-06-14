@@ -5,8 +5,7 @@ const asyncHandler = require("express-async-handler");
 exports.personal_list = asyncHandler(async (req, res, next) => {
     Promise.all([
         Personal.countDocuments({}).exec(),
-        Personal.find({}, "anonomoly_id_number author")
-            .exec()
+        Personal.find({}).exec()
     ]).then(([employeeCount, allEmployees]) => {
         res.render('index', {
             inputPage: './employee-database',
