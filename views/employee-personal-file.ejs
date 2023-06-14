@@ -1,0 +1,21 @@
+<div>
+    <h1>
+        <%= `Dr. ${employee.first_name} ${employee.family_name}` %>
+    </h1>
+    <hr class="border-t-4 border-red-700">
+    <p><strong>Employee Self Identification: </strong>
+        <%= `Dr. ${employee.first_name} ${employee.family_name}` %>
+    </p>
+    <p><strong>Employee ID#: </strong>
+        <%= `OSE-${employee._id}` %>
+    </p>
+    <p><strong>Clearance Level: </strong>
+        <%= `${employee.clearance_level}` %>
+    </p>
+    <p><strong>Date of Death: </strong>
+        <%= `${employee.date_of_death}` %>
+    </p>
+    <p><strong>Date of Birth: </strong>
+        <%= `${employee.date_of_birth}` %>
+    </p>
+</div>
