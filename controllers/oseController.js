@@ -28,7 +28,7 @@ exports.ose_list = asyncHandler(async (req, res) => {
 exports.ose_info = asyncHandler(async (req, res, next) => {
     try {
         const ose = await OSE.findOne({ _id: req.params.id })
-        .populate("author").exec();
+            .populate("author").exec();
         res.render('index', {
             inputPage: './ose-information.ejs',
             ose: ose
@@ -44,7 +44,14 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
             .sort({ first_name: 1 })
             .exec();
         res.render('ose_form', {
-            authors: personal
+            authors: personal,
+            ose: {
+                anonomoly_id_number: 0,
+                author: personal[0]._id,
+                object_class: 'TETH',
+                special_containment_procedures: 'Enter OSE special containment procedures',
+                description: 'Enter OSE description'
+            }
         });
     } catch (err) {
         res.status(500).send('Error occurred while fetching Personal data');
