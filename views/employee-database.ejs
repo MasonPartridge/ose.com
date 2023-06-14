@@ -1,0 +1,19 @@
+<div class="flex flex-col">
+    <div class="min-h-[64px] bg-slate-700 p-4 text-white flex flex-col justify-center">
+        <h1>The Employee Database</h1>
+        <p>Number of Employee Files: <%= employee_count %>
+        </p>
+    </div>
+    <hr>
+    <ul>
+        <% all_employee.forEach(function(employee) { %>
+            <li>
+                <div class="min-h-[64px] bg-slate-700 p-4 text-white flex flex-row justify-center hover:text-blue-400">
+                    <a href="<%= `/employee-database/${employee._id}` %>">
+                        <%= `Dr. ${ose.author.first_name} ${ose.author.family_name}` %>
+                    </a>
+                </div>
+            </li>
+            <% }); %>
+    </ul>
+</div>
