@@ -15,8 +15,16 @@ exports.personal_list = asyncHandler(async (req, res, next) => {
     });
 });
 
-exports.personal_info = asyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: EMPLOYEE INFORMATION FOR ${req.params.id}`);
+exports.employee_info = asyncHandler(async (req, res) => {
+    try {
+        const employee = await Personal.findOne({ _id: req.params.id }).exec();
+        res.render('index', {
+            inputPage: './employee-personal-file.ejs',
+            employee: employee
+        });
+    } catch (err) {
+        res.status(500).send('Error occurred while fetching employee data');
+    }
 });
 
 exports.employee_form_get = asyncHandler(async (req, res) => {
@@ -69,3 +77,4 @@ exports.employee_form_post = [
         }
     })
 ];
+
