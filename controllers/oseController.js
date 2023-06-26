@@ -58,6 +58,22 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
     }
 });
 
+exports.ose_update_form = asyncHandler(async (req, res) => {
+    Promise.all([
+        OSE.findOne({ _id: req.id }).exec(),
+        Personal.find({}, "first_name family_name")
+            .sort({ first_name: 1 })
+            .exec()
+    ]).then((ose, personal) => {
+        res.render('ose_form', {
+            authors: personal,
+            ose: ose
+        });
+    }).catch((err) => {
+        res.status(500).send('Error occurred while fetching OSE data');
+    })
+})
+
 exports.ose_form_post = [
     body("anonomoly_id_number_field", "Invalid Number"),
     body("author_field", "Invalid Name"),
