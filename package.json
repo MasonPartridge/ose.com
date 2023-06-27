@@ -6,7 +6,8 @@
     "build-css": "npx tailwindcss -i ./src/input.css -o ./public/stylesheets/style.css --watch",
     "start": "node ./bin/www",
     "serverstart": "DEBUG=ose-webiste:* npm run dev",
-    "dev": "concurrently \"nodemon ./bin/www\" \"npm run build-css\""
+    "dev": "nodemon ./bin/www",
+    "dev-css": "concurrently \"nodemon ./bin/www\" \"npm run build-css\""
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

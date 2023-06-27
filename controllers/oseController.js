@@ -58,17 +58,25 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
     }
 });
 
-exports.ose_update_form = asyncHandler(async (req, res) => {
+exports.ose_edit_form = asyncHandler(async (req, res) => {
+    console.log(`req id: ${req.params.id}`);
     Promise.all([
-        OSE.findOne({ _id: req.id }).exec(),
+        OSE.findOne({ _id: req.params.id })
+            .exec(),
         Personal.find({}, "first_name family_name")
             .sort({ first_name: 1 })
             .exec()
-    ]).then((ose, personal) => {
-        res.render('ose_form', {
-            authors: personal,
-            ose: ose
-        });
+    ]).then(([ose, personal]) => {
+        if (!ose) {
+          res.status(404).send('OSE document not found');
+          return;
+        } else {
+            console.log(`ose: ${ose}, employee: ${personal}`);
+            res.render('ose_form', {
+                authors: personal,
+                ose: ose
+            });
+        }
     }).catch((err) => {
         res.status(500).send('Error occurred while fetching OSE data');
     })

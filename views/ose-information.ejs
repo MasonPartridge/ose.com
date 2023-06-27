@@ -1,5 +1,10 @@
 <div>
-    <h1><%= `OSE-${ose.anonomoly_id_number}` %></h1>
+    <div class="flex flex-row justify-between">
+        <h1><%= `OSE-${ose.anonomoly_id_number}` %></h1>
+        <a 
+            href="/ose-database/edit-form/<%= ose._id %>"
+            class="text-blue-700">Edit</a>
+    </div>
     <hr class="border-t-4 border-red-700">
     <p><strong>Documentation Manager: </strong><%= `Author: Dr. ${ose.author.first_name} ${ose.author.family_name}` %></p>
     <p><strong>Item #: </strong><%= `OSE-${ose.anonomoly_id_number}` %></p>
