@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (is_editing) { %>
+    <% if (is_editing === "true") { %>
         <form method="POST" action="/employee-database/employee-delete">
             <input 
                 type="hidden"
@@ -63,7 +63,7 @@
                 value="<%= clearance_level %>"><%= clearance_level %></option>
         <% }); %>
         </select>
-        <% if (is_editing) { %>
+        <% if (is_editing === "true") { %>
             <input 
                 type="hidden"
                 name="is_editing"

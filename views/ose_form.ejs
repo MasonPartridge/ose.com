@@ -7,7 +7,7 @@
     <title>OSE Enter Form</title>
 </head>
 <body>
-    <% if (is_editing) { %>
+    <% if (is_editing === "true") { %>
         <form method="POST" action="/ose-database/ose-delete">
             <input 
                 type="hidden"
