@@ -7,7 +7,7 @@
     <title>OSE Enter Form</title>
 </head>
 <body>
-    <form method="POST" action="">
+    <form method="POST" action="/ose-database/ose-form">
         <label for="anonomoly_id_number">OSE Identification Number:</label>
         <input
             value=<%= ose.anonomoly_id_number %> 
@@ -61,6 +61,18 @@
             type="text"
             name="description_field"
             value="<%= ose.description %>"
+        />
+        <input 
+            type="hidden"
+            name="is_editing"
+            value="<%= is_editing %>" 
+            required="true"
+        />
+        <input 
+            type="hidden"
+            name="_id"
+            value="<%= ose._id %>" 
+            required="true"
         />
         <input type="submit" value="Submit OSE Entry" />
     </form>

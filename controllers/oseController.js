@@ -50,8 +50,10 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
                 author: personal[0]._id,
                 object_class: 'TETH',
                 special_containment_procedures: 'Enter OSE special containment procedures',
-                description: 'Enter OSE description'
-            }
+                description: 'Enter OSE description',
+                _id: "null"
+            },
+            is_editing: false
         });
     } catch (err) {
         res.status(500).send('Error occurred while fetching Personal data');
@@ -68,13 +70,14 @@ exports.ose_edit_form = asyncHandler(async (req, res) => {
             .exec()
     ]).then(([ose, personal]) => {
         if (!ose) {
-          res.status(404).send('OSE document not found');
-          return;
+            res.status(404).send('OSE document not found');
+            return;
         } else {
             console.log(`ose: ${ose}, employee: ${personal}`);
             res.render('ose_form', {
                 authors: personal,
-                ose: ose
+                ose: ose,
+                is_editing: true
             });
         }
     }).catch((err) => {
@@ -98,6 +101,14 @@ exports.ose_form_post = [
         .isLength({ min: 1 })
         .escape()
         .withMessage("Invalid input."),
+    body("is_editing")
+        .trim()
+        .isBoolean()
+        .escape()
+        .withMessage("Invalid non boolean input"),
+    body("_id", "Invalid input")
+        .trim()
+        .escape(),
 
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
@@ -122,8 +133,17 @@ exports.ose_form_post = [
                 res.status(500).send('Error occurred while fetching Personal data');
             }
         } else {
-            await ose.save();
-            res.redirect('/ose-database');
+            try {
+                if (req.body.is_editing) {
+                    await ose.save();
+                } else {
+                    await OSE.findOneAndReplace({ _id: req.body._id }, ose)
+                }
+                res.redirect('/ose-database');
+            } catch (err) {
+                res.status(500).send('Error occurred while fetching OSE data');
+                console.log(err);
+            }
         }
     })
 ]
