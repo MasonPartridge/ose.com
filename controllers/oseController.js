@@ -148,7 +148,7 @@ exports.ose_form_post = [
             }
         } else {
             try {
-                if (req.body.is_editing) {
+                if (req.body.is_editing === "true") {
                     await OSE.findOneAndReplace({ _id: req.body._id }, ose)
                 } else {
                     await (new OSE(ose)).save();
