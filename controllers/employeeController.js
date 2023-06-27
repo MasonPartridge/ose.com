@@ -53,6 +53,25 @@ exports.employee_edit = asyncHandler(async (req, res) => {
     }
 })
 
+exports.employee_delete = [
+    body("_id")
+        .trim()
+        .escape(),
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            try {
+                await Personal.deleteOne({ _id: req.body._id });
+                await OSE.updateMany({ author: _id }, { $set: { author: "649b0093594d57528c146dc8" } })
+                res.redirect("/employee-database");
+            } catch (err) {
+                res.send(500).send('Error occured while deleting employee');
+                console.log(err);
+            }
+        }
+    })
+]
+
 exports.employee_form_post = [
     body("first_name_field")
         .trim()
