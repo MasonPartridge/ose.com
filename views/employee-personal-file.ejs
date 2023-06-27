@@ -1,7 +1,12 @@
 <div>
-    <h1>
-        <%= `Dr. ${employee.first_name} ${employee.family_name}` %>
-    </h1>
+    <div class="flex flex-row justify-between">
+        <h1>
+            <%= `Dr. ${employee.first_name} ${employee.family_name}` %>
+        </h1>
+        <a 
+            href="/employee-database/edit-form/<%= employee._id %>"
+            class="text-blue-700">Edit</a>
+    </div>
     <hr class="border-t-4 border-red-700">
     <p><strong>Employee Self Identification: </strong>
         <%= `Dr. ${employee.first_name} ${employee.family_name}` %>
