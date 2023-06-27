@@ -61,7 +61,6 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
 });
 
 exports.ose_edit_form = asyncHandler(async (req, res) => {
-    console.log(`req id: ${req.params.id}`);
     Promise.all([
         OSE.findOne({ _id: req.params.id })
             .exec(),
@@ -73,7 +72,6 @@ exports.ose_edit_form = asyncHandler(async (req, res) => {
             res.status(404).send('OSE document not found');
             return;
         } else {
-            console.log(`ose: ${ose}, employee: ${personal}`);
             res.render('ose_form', {
                 authors: personal,
                 ose: ose,
@@ -84,6 +82,22 @@ exports.ose_edit_form = asyncHandler(async (req, res) => {
         res.status(500).send('Error occurred while fetching OSE data');
     })
 })
+
+exports.ose_delete = [
+    body("_id", "Invalid input")
+        .trim()
+        .escape(),
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        try {
+            await OSE.deleteOne({ _id: req.body._id });
+            res.redirect('/ose-database');
+        } catch (err) {
+            res.status(500).send('Error occurred while finding OSE to delete');
+            console.log(err);
+        }
+    })
+]
 
 exports.ose_form_post = [
     body("anonomoly_id_number_field", "Invalid Number"),

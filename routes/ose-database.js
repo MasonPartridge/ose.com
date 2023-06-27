@@ -15,4 +15,6 @@ router.get("/edit-form/:id", ose_controller.ose_edit_form);
 
 router.post("/ose-form", ose_controller.ose_form_post);
 
+router.post("/ose-delete", ose_controller.ose_delete);
+
 module.exports = router;
