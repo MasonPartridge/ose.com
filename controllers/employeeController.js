@@ -43,6 +43,7 @@ exports.employee_form_get = asyncHandler(async (req, res) => {
 exports.employee_edit = asyncHandler(async (req, res) => {
     try {
         const employee = await Personal.findOne({ _id: req.params.id }).exec();
+        console.log(`time: ${employee.date_of_birth}`);
         res.render('employee_form', {
             employee: employee,
             is_editing: true
@@ -69,32 +70,45 @@ exports.employee_form_post = [
         .isAlphanumeric()
         .withMessage("Family name has non-alphanumeric characters."),
     body("date_of_birth_field", "Invalid date of birth")
-        .optional({ nullable: true })
-        .isISO8601()
-        .toDate(),
+        .optional({ nullable: true }),
     body("date_of_death_field", "Invalid date of death")
-        .optional({ nullable: true })
-        .isISO8601()
-        .toDate(),
+        .optional({ nullable: true }),
     body("clearance_level_field"),
+    body("is_editing")
+        .trim()
+        .isBoolean()
+        .escape()
+        .withMessage("Invalid non boolean input"),
+    body("_id", "Invalid input")
+        .trim()
+        .escape(),
 
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
 
-        const employee = new Personal({
+        const employee = {
             first_name: req.body.first_name_field,
             family_name: req.body.family_name_field,
             date_of_birth: req.body.date_of_birth_field,
             date_of_death: req.body.date_of_death_field,
             clearance_level: req.body.clearance_level_field
-        });
+        };
 
         if (!errors.isEmpty()) {
-            res.render("author_form");
             return;
         } else {
-            await employee.save();
-            res.redirect('/personal');
+            console.log(req.body.date_of_birth_field);
+            try {
+                if (req.body.is_editing) {
+                    await Personal.findOneAndReplace({ _id: req.body._id }, employee)
+                } else {
+                    await (new Personal(employee)).save();
+                }
+                res.redirect('/employee-database');
+            } catch (err) {
+                res.status(500).send('Error occurred while fetching employee data');
+                console.log(err);
+            }
         }
     })
 ];
