@@ -1,4 +1,5 @@
 const { body, validationResult } = require("express-validator");
+const OSE = require("../models/ose");
 const Personal = require("../models/employee");
 const asyncHandler = require("express-async-handler");
 
@@ -36,7 +37,7 @@ exports.employee_form_get = asyncHandler(async (req, res) => {
             family_name: "Enter family name here",
             clearance_level: "I"
         },
-        is_editing: false
+        is_editing: "false"
     });
 });
 
@@ -46,7 +47,7 @@ exports.employee_edit = asyncHandler(async (req, res) => {
         console.log(`time: ${employee.date_of_birth}`);
         res.render('employee_form', {
             employee: employee,
-            is_editing: true
+            is_editing: "true"
         });
     } catch (err) {
         res.status(500).send('Error occurred while fetching employee data');
@@ -112,13 +113,17 @@ exports.employee_form_post = [
             date_of_death: req.body.date_of_death_field,
             clearance_level: req.body.clearance_level_field
         };
+        console.log(employee)
 
         if (!errors.isEmpty()) {
+            errors.array().forEach((error) => {
+                console.log(error.msg);
+            });
             return;
         } else {
             console.log(req.body.date_of_birth_field);
             try {
-                if (req.body.is_editing) {
+                if (req.body.is_editing === "true") {
                     await Personal.findOneAndReplace({ _id: req.body._id }, employee)
                 } else {
                     await (new Personal(employee)).save();

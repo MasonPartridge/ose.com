@@ -53,7 +53,7 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
                 description: 'Enter OSE description',
                 _id: "null"
             },
-            is_editing: false
+            is_editing: "false"
         });
     } catch (err) {
         res.status(500).send('Error occurred while fetching Personal data');
@@ -75,7 +75,7 @@ exports.ose_edit_form = asyncHandler(async (req, res) => {
             res.render('ose_form', {
                 authors: personal,
                 ose: ose,
-                is_editing: true
+                is_editing: "true"
             });
         }
     }).catch((err) => {
