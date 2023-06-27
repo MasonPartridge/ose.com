@@ -7,6 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+    <% if (is_editing) { %>
+        <form method="POST" action="/employee-database/employee-delete">
+            <input 
+                type="hidden"
+                name="_id"
+                value="<%= employee._id %>" 
+                required="true"
+            />
+            <button type="submit">Delete</button>
+        </form>     
+    <% } %>
     <form method="post" action="/employee-database/employee-form">
         <label for="first_name">First Name</label>
         <input 
