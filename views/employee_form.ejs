@@ -52,18 +52,20 @@
                 value="<%= clearance_level %>"><%= clearance_level %></option>
         <% }); %>
         </select>
-        <input 
-            type="hidden"
-            name="is_editing"
-            value="<%= is_editing %>" 
-            required="true"
-        />
-        <input 
-            type="hidden"
-            name="_id"
-            value="<%= employee._id %>" 
-            required="true"
-        />
+        <% if (is_editing) { %>
+            <input 
+                type="hidden"
+                name="is_editing"
+                value="<%= is_editing %>" 
+                required="true"
+            />
+            <input 
+                type="hidden"
+                name="_id"
+                value="<%= employee._id %>" 
+                required="true"
+            />
+        <% } %>
         <input type="submit" value="Submit Employee Form" />
     </form>
 </body>
