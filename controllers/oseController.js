@@ -127,13 +127,13 @@ exports.ose_form_post = [
     asyncHandler(async (req, res) => {
         const errors = validationResult(req);
 
-        const ose = new OSE({
+        const ose = {
             anonomoly_id_number: req.body.anonomoly_id_number_field,
             author: req.body.author_field,
             object_class: req.body.object_class_field,
             special_containment_procedures: req.body.special_containment_procedures_field,
             description: req.body.description_field
-        })
+        }
 
         if (!errors.isEmpty()) {
             try {
@@ -149,9 +149,9 @@ exports.ose_form_post = [
         } else {
             try {
                 if (req.body.is_editing) {
-                    await ose.save();
-                } else {
                     await OSE.findOneAndReplace({ _id: req.body._id }, ose)
+                } else {
+                    await (new OSE(ose)).save();
                 }
                 res.redirect('/ose-database');
             } catch (err) {
