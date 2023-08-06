@@ -19,7 +19,7 @@ exports.ose_list = asyncHandler(async (req, res) => {
             inputPage: './ose-database.ejs'
         });
     }).catch(err => {
-        console.error('Error retrieving OSE document:', error);
+        console.error('Error retrieving OSE document:', err);
         res.status(500).send('Error occurred while fetching OSE data');
     });
 
