@@ -573,10 +573,6 @@ video {
   height: 700px;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .max-h-\[400px\] {
   max-height: 400px;
 }
@@ -639,10 +635,6 @@ video {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.overflow-auto {
-  overflow: auto;
 }
 
 .rounded-lg {
@@ -711,6 +703,22 @@ video {
 
 .pt-\[2px\] {
   padding-top: 2px;
+}
+
+.pr-\[49px\] {
+  padding-right: 49px;
+}
+
+.pr-\[45px\] {
+  padding-right: 45px;
+}
+
+.pr-\[50px\] {
+  padding-right: 50px;
+}
+
+.pr-\[52px\] {
+  padding-right: 52px;
 }
 
 .text-left {

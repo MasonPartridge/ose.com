@@ -1,83 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class="relative">
     <% if (is_editing === "true") { %>
-        <form method="POST" action="/employee-database/employee-delete">
+        <form class="absolute right-0 top-0" method="POST" action="/employee-database/employee-delete">
             <input 
                 type="hidden"
                 name="_id"
                 value="<%= employee._id %>" 
                 required="true"
             />
-            <button type="submit">Delete</button>
+            <button class="text-blue-700 pt-[2px]" type="submit">Delete</button>
         </form>     
     <% } %>
     <form method="post" action="/employee-database/employee-form">
-        <label for="first_name">First Name</label>
-        <input 
-            id="first_name"
-            type="text"
-            required="true"
-            name="first_name_field"
-            value="<%= employee.first_name %>"
-        />
-        <label for="family_name">Family Name</label>
-        <input 
-            id="family_name"
-            type="text"
-            name="family_name_field"
-            value="<%= employee.family_name %>"
-        />
-        <label for="date_of_birth">Date of Birth:</label>
-        <input 
-            id="date_of_birth"
-            type="date"
-            name="date_of_birth_field"
-            value="<%= employee.date_of_birth %>"
-        />
-        <label for="date_of_death">Date of Death:</label>
-        <input 
-            id="date_of_death"
-            type="date"
-            name="date_of_death_field"
-            value="<%= employee.date_of_death %>"
-        />
-        <label for="clearance_level">Clearance Level:</label>
-        <select 
-            for="clearance_level"
-            id="clearance_level"
-            name="clearance_level_field"
-            required="true"
-        >
-        <% ["I", "II", "III", "IV", "V"].forEach((clearance_level) => { %>
-            <option
-                <% if (employee.clearance_level === clearance_level) { %>
-                 selected
-                <% } %> 
-                value="<%= clearance_level %>"><%= clearance_level %></option>
-        <% }); %>
-        </select>
-        <% if (is_editing === "true") { %>
-            <input 
-                type="hidden"
-                name="is_editing"
-                value="<%= is_editing %>" 
+        <div class="flex justify-between pr-[50px]">
+            <label for="first_name">First Name:</label>
+            <input
+                id="first_name"
+                type="text"
                 required="true"
+                class="form-field"
+                name="first_name_field"
+                value="<%= employee.first_name %>"
             />
-            <input 
-                type="hidden"
-                name="_id"
-                value="<%= employee._id %>" 
-                required="true"
+            <label for="family_name">Family Name:</label>
+            <input
+                id="family_name"
+                type="text"
+                class="form-field"
+                name="family_name_field"
+                value="<%= employee.family_name %>"
             />
-        <% } %>
-        <input type="submit" value="Submit Employee Form" />
+        </div>
+            <hr class="border-t-4 border-red-700">
+                <div>
+                    <label for="clearance_level">Clearance Level:</label>
+                    <select
+                        for="clearance_level"
+                        id="clearance_level"
+                        name="clearance_level_field"
+                        class="form-field"
+                        required="true"
+                    >
+                    <% ["I", "II", "III", "IV", "V"].forEach((clearance_level) => { %>
+                        <option
+                            <% if (employee.clearance_level === clearance_level) { %>
+                            selected
+                            <% } %> 
+                            value="<%= clearance_level %>"><%= clearance_level %></option>
+                    <% }); %>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <div>
+                        <label for="date_of_birth">Date of Birth:</label>
+                        <input
+                            id="date_of_birth"
+                            type="date"
+                            class="form-field"
+                            name="date_of_birth_field"
+                            value="<%= employee.date_of_birth %>"
+                        />
+                    </div>
+                    <div>
+                        <label for="date_of_death">Date of Death:</label>
+                        <input
+                            id="date_of_death"
+                            type="date"
+                            class="form-field"
+                            name="date_of_death_field"
+                            value="<%= employee.date_of_death %>"
+                        />
+                    </div>
+                <% if (is_editing === "true") { %>
+                    <input 
+                        type="hidden"
+                        name="is_editing"
+                        value="<%= is_editing %>" 
+                        required="true"
+                    />
+                    <input 
+                        type="hidden"
+                        name="_id"
+                        value="<%= employee._id %>" 
+                        required="true"
+                    />
+                <% } %>
+                <input type="submit" 
+                    class="text-left border-solid border-2 
+                        border-gray-700 bg-gray-200 mr-auto" 
+                    value="Submit Employee Form" />
+            </div>
     </form>
-</body>
-</html>
+</div>
