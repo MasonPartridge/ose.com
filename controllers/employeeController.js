@@ -31,7 +31,8 @@ exports.employee_info = asyncHandler(async (req, res) => {
 });
 
 exports.employee_form_get = asyncHandler(async (req, res) => {
-    res.render('employee_form', {
+    res.render('index.ejs', {
+        inputPage: 'employee_form',
         employee: {
             first_name: "Enter first name here",
             family_name: "Enter family name here",
@@ -45,7 +46,8 @@ exports.employee_edit = asyncHandler(async (req, res) => {
     try {
         const employee = await Personal.findOne({ _id: req.params.id }).exec();
         console.log(`time: ${employee.date_of_birth}`);
-        res.render('employee_form', {
+        res.render('index.ejs', {
+            inputPage: 'employee_form',
             employee: employee,
             is_editing: "true"
         });

@@ -1,78 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSE Enter Form</title>
-</head>
-<body>
+<div class="relative">
     <% if (is_editing === "true") { %>
-        <form method="POST" action="/ose-database/ose-delete">
+        <form  class="absolute right-0 top-0" method="POST" action="/ose-database/ose-delete">
             <input 
                 type="hidden"
                 name="_id"
                 value="<%= ose._id %>" 
                 required="true"
             />
-            <button type="submit">Delete</button>
+            <input class="text-blue-700 pt-[2px]" type="submit" value="Delete" />
         </form>     
     <% } %>
-    <form method="POST" action="/ose-database/ose-form">
-        <label for="anonomoly_id_number">OSE Identification Number:</label>
-        <input
-            value=<%= ose.anonomoly_id_number %> 
-            id="anonomoly_id_number"
-            type="number"
-            name="anonomoly_id_number_field"
-            required="true"
-        />
-        <label for="author">Author:</label>
-        <select
-            id="author"
-            for="author"
-            name="author_field"
-            required="true"
-        >
-            <% authors.forEach((author) => { %>
-                <option 
-                    value="<%= author._id %>"
-                    <% if (author._id === ose.author) { %>
-                        selected
-                    <% } %>
-                    >Dr. <%= author.first_name + " " + author.family_name %></option>
-            <% }); %>
-        </select>
-        <label for="object_class">Object Class:</label>
-        <select 
-            id="object_class"
-            for="object_class"
-            name="object_class_field"
-            required="true"
-        >
-            <% ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"].forEach((object_class) => { %>
-                <option 
-                    value="<%= object_class %>"
-                    <% if (object_class === ose.object_class) { %>
-                     selected
-                    <% } %>
-                    ><%= object_class %></option>
-            <% }); %>
-        </select>
-        <label for="special_containment_procedures">Special Containment Procedures:</label>
-        <input
-            id="special_containment_procedures"
-            type="text"
-            name="special_containment_procedures_field"
-            value="<%= ose.special_containment_procedures %>"
-        />
-        <label for="description">Description:</label>
-        <input
-            id="description"
-            type="text"
-            name="description_field"
-            value="<%= ose.description %>"
-        />
+    <form method="POST" action="/ose-database/ose-form" class="flex flex-col">
+        <div>
+            <label for="anonomoly_id_number">OSE Identification Number:</label>
+            <input
+                value=<%= ose.anonomoly_id_number %> 
+                id="anonomoly_id_number"
+                type="number"
+                name="anonomoly_id_number_field"
+                required="true"
+                class="form-field w-10"
+            />
+        </div>
+        <hr class="border-t-4 border-red-700">
+        <div>    
+            <label for="author">Documentation Manager:</label>
+            <select
+                id="author"
+                for="author"
+                name="author_field"
+                class="form-field"
+                required="true"
+            >
+                <% authors.forEach((author) => { %>
+                    <option
+                        value="<%= author._id %>"
+                        <% if (author._id === ose.author) { %>
+                            selected
+                        <% } %>
+                        >Dr. <%= author.first_name + " " + author.family_name %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div>
+            <label for="object_class">Object Class:</label>
+            <select
+                id="object_class"
+                for="object_class"
+                name="object_class_field"
+                class="form-field"
+                required="true"
+            >
+                <% ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"].forEach((object_class) => { %>
+                    <option
+                        value="<%= object_class %>"
+                        <% if (object_class === ose.object_class) { %>
+                         selected
+                        <% } %>
+                        ><%= object_class %></option>
+                <% }); %>
+            </select>
+        </div>
+            <label for="special_containment_procedures">Special Containment Procedures:</label>
+            <textarea
+                id="special_containment_procedures"
+                type="text"
+                name="special_containment_procedures_field"
+                class="form-field overflow-wrap"
+                rows="5"
+            ><%= ose.special_containment_procedures %></textarea>
+            <label for="description">Description:</label>
+            <textarea
+                id="description"
+                type="text"
+                name="description_field"
+                class="form-field"
+                rows="5"
+            ><%= ose.description %></textarea>
         <input 
             type="hidden"
             name="is_editing"
@@ -85,7 +89,6 @@
             value="<%= ose._id %>" 
             required="true"
         />
-        <input type="submit" value="Submit OSE Entry" />
+        <input type="submit" class="text-left border-solid border-2 border-gray-700 bg-gray-200 mr-auto" value="Submit OSE Entry" />
     </form>
-</body>
-</html>
+</div>

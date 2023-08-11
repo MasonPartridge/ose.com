@@ -43,7 +43,8 @@ exports.ose_form_get = asyncHandler(async (req, res) => {
         const personal = await Personal.find({}, "first_name family_name")
             .sort({ first_name: 1 })
             .exec();
-        res.render('ose_form', {
+        res.render('index.ejs', {
+            inputPage: 'ose_form',
             authors: personal,
             ose: {
                 anonomoly_id_number: 0,
@@ -72,7 +73,8 @@ exports.ose_edit_form = asyncHandler(async (req, res) => {
             res.status(404).send('OSE document not found');
             return;
         } else {
-            res.render('ose_form', {
+            res.render('index.ejs', {
+                inputPage: 'ose_form',
                 authors: personal,
                 ose: ose,
                 is_editing: "true"
